@@ -1,0 +1,99 @@
+<!-- Banner  -->
+<div class=banner>Banner</div>
+<!-- modal -->
+<ngx-smart-modal #myModal identifier="myModal">
+  <h1>Place Order</h1>
+  <form style="min-height: 560px">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter name">
+      </div>
+      <div class="formgroup">
+            <div class="">
+                <label for="exampleFormControlInput1">Food</label>
+                <div class="" style="padding-right: 0;padding-left: 0;">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter food name" [(ngModel)]="task" name="ee"/>
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary" type="button" (click)="onClick()">+
+                <!-- <span class="glyphicon glyphicon-search"></span> -->
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <ul class="list-group">
+                <li *ngFor="let task of tasks; let i = index;" class="list-group-item">
+                    <span> {{ task.name }} </span>
+                    <div class="items">
+                    <input type="number">
+                    <button (click)="onClickDelete(i)" class="btn btn-danger deleteBtn">x</button>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+      <!-- </div> -->
+  </form>
+  <div style="text-align: center;">
+    <button (click)="myModal.close()" class="btn btn-success" style="width: 80px; margin-right: 5px;">Submit</button>
+    <button (click)="myModal.close()" class="btn btn-danger" style="width: 80px; margin-left: 5px;">Close</button>
+  </div>
+</ngx-smart-modal>
+
+
+<!-- Table -->
+<div class="container">
+  <button class="btn btn-primary" style="float: right; margin-top: 30px; margin-bottom: 30px;" (click)="ngxSmartModalService.getModal('myModal').open()">Make Order</button>
+  <table class="table table-striped">
+    <thead>
+      <tr style="text-align: center">
+        <th scope="col" >#</th>
+        <th scope="col" >Name</th>
+        <th scope="col" >Order Type</th>
+        <th scope="col" >Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- <tr>
+        <th scope="row">2</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
