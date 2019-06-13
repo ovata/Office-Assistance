@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class DBodyComponent implements OnInit {
 
+  model: any = {};
   formData = new FormGroup ({
     userName: new FormControl ('', Validators.required)
   });
@@ -24,10 +25,17 @@ export class DBodyComponent implements OnInit {
     this.task = '';
   }
 
+  clear() {
+    this.tasks = [];
 
+  }
 
   onClickDelete(index) {
     this.tasks.splice(index, 1);
+  }
+
+  onSubmit(data) {
+    console.log(data, this.model)
   }
 
   ngOnInit() {
