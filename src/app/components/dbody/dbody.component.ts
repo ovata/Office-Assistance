@@ -9,14 +9,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class DBodyComponent implements OnInit {
 
-  form: FormGroup;
+  formData = new FormGroup ({
+    userName: new FormControl ('', Validators.required)
+  });
 
 
   constructor(public ngxSmartModalService: NgxSmartModalService) { }
   task: string;
   tasks = [];
 
-  onClick() {
+  onClick(data) {
     this.tasks.push({name: this.task, strike: false});
     this.tasks.splice(5, 1);
     this.task = '';

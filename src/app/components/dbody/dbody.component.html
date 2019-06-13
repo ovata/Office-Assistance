@@ -3,10 +3,10 @@
 <!-- modal -->
 <ngx-smart-modal #myModal identifier="myModal">
   <h1>Place Order</h1>
-  <form [FormGroup]="form" #form="ngForm">
+  <form>
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="userName" [ngClass]="{'is-invalid' : form.get('name').touched && form.get('name').invalid}"/>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" />
         <div class="invalid-feedback">
           <div>Name is required</div>
         </div>
