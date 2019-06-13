@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dbody',
@@ -7,6 +8,9 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
   styleUrls: ['./dbody.component.css']
 })
 export class DBodyComponent implements OnInit {
+
+  form: FormGroup;
+
 
   constructor(public ngxSmartModalService: NgxSmartModalService) { }
   task: string;
@@ -17,6 +21,8 @@ export class DBodyComponent implements OnInit {
     this.tasks.splice(5, 1);
     this.task = '';
   }
+
+
 
   onClickDelete(index) {
     this.tasks.splice(index, 1);

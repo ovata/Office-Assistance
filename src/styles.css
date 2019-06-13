@@ -5,3 +5,12 @@
 body {
   margin: 0%;
 }
+
+.nsm-content {
+  margin-top: 150px;
+  width: 700px;
+}
+
+.nsm-dialog {
+  max-width: 725px;
+}

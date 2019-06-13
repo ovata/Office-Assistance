@@ -3,19 +3,23 @@
 <!-- modal -->
 <ngx-smart-modal #myModal identifier="myModal">
   <h1>Place Order</h1>
-  <form style="min-height: 560px">
+  <form [FormGroup]="form" #form="ngForm">
       <div class="form-group">
-        <label for="exampleFormControlInput1">Name</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter name">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="userName" [ngClass]="{'is-invalid' : form.get('name').touched && form.get('name').invalid}"/>
+        <div class="invalid-feedback">
+          <div>Name is required</div>
+        </div>
+        
       </div>
-      <div class="formgroup">
+      <div class="formgroup" >
             <div class="">
-                <label for="exampleFormControlInput1">Food</label>
+                <label for="food">Food</label>
                 <div class="" style="padding-right: 0;padding-left: 0;">
                     <div class="input-group">
-                        <input type="text" class="form-control" style="margin-right: 54px;" placeholder="Enter food name" [(ngModel)]="task" name="ee"/>
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary" type="button" (click)="onClick()">+
+                        <input type="text" class="form-control foodInput" id="food" style="z-index: 0;" placeholder="Enter food name" [(ngModel)]="task" name="food" />
+                        <div class="input-group-btn" style="position: absolute;right: 0;">
+                            <button class="btn btn-primary addBtn" type="button" (click)="onClick()">+
                 <!-- <span class="glyphicon glyphicon-search"></span> -->
                             </button>
                         </div>
@@ -29,8 +33,11 @@
                 <li *ngFor="let task of tasks; let i = index;" class="list-group-item">
                     <span> {{ task.name }} </span>
                     <div class="items">
-                    <input type= "number" placeholder= "0.00">
-                    <button (click)="onClickDelete(i)" class="btn btn-danger deleteBtn">x</button>
+                      <div style="position: relative;">
+                        <input type= "number" style="position: relative; padding-left: 20px"  placeholder= "0.00">
+                        <span style="position:absolute;left: 8px;top: 4.5px;">	&#8358;</span>
+                      <label (click)="onClickDelete(i)" class=" btn deleteBtn">x</label>
+                      </div>
 
                     </div>
                 </li>
