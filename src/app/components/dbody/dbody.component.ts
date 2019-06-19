@@ -8,21 +8,25 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./dbody.component.css']
 })
 export class DBodyComponent implements OnInit {
-
+  task: string;
+  price: string;
+  tasks = [];
+  order = [];
   model: any = {};
   formData = new FormGroup ({
-    userName: new FormControl ('', Validators.required)
+    userName: new FormControl ('', Validators.required),
+    food: new FormControl ('', Validators.required)
   });
 
 
   constructor(public ngxSmartModalService: NgxSmartModalService) { }
-  task: string;
-  tasks = [];
+  
 
   onClick(data) {
-    this.tasks.push({name: this.task, strike: false});
+    this.tasks.push({food_name: this.task, price: this.price});
     this.tasks.splice(5, 1);
     this.task = '';
+   
   }
 
   clear() {
@@ -35,10 +39,14 @@ export class DBodyComponent implements OnInit {
   }
 
   onSubmit(data) {
-    console.log(data, this.model)
+    this.order.push({name: this.model.name, food: this.tasks});
+    console.log('data', this.order);
+    this.order = [];
+    // console.log(this.tasks);
   }
 
   ngOnInit() {
+    
   }
 
 }
