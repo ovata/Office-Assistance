@@ -1,3 +1,5 @@
+import { FoodService } from './../../core/services/food.service';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -19,14 +21,16 @@ export class DBodyComponent implements OnInit {
   });
 
 
-  constructor(public ngxSmartModalService: NgxSmartModalService) { }
-  
+  constructor(public ngxSmartModalService: NgxSmartModalService, private food: FoodService) { }
+
+  ngOnInit() {
+   this.food.getFoods();
+  }
 
   onClick(data) {
     this.tasks.push({food_name: this.task, price: this.price});
     this.tasks.splice(5, 1);
     this.task = '';
-   
   }
 
   clear() {
@@ -42,11 +46,6 @@ export class DBodyComponent implements OnInit {
     this.order.push({name: this.model.name, food: this.tasks});
     console.log('data', this.order);
     this.order = [];
-    // console.log(this.tasks);
+    this.food.addHero(data);
   }
-
-  ngOnInit() {
-    
-  }
-
 }
