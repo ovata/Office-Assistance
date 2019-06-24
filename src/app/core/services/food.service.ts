@@ -24,7 +24,9 @@ export class FoodService {
   }
 
   addFood(food: FoodMdl) {
-    return this.http.post<FoodMdl>(this.baseUrl, food);
+    const data =  JSON.stringify(food);
+    console.log('dta', data);
+    return this.http.post<FoodMdl>(this.baseUrl, data);
   }
 }
 

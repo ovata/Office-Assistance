@@ -1,14 +1,14 @@
 <!-- Banner  -->
-<div class=banner>Banner</div>
+<div class="banner">Banner</div>
 <!-- modal -->
 <ngx-smart-modal #myModal identifier="myModal">
   <h1>Place Order</h1>
-  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <!-- <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required/>
         <div *ngIf="f.submitted && name.invalid" class="name">
-          <!-- <div *ngIf="name.errors.required">Name is required</div> -->
+          <div *ngIf="name.errors.required">Name is required</div>
         </div>
 
       </div>
@@ -21,13 +21,13 @@
 
                         <div class="input-group-btn" style="position: absolute;right: 0;">
                             <button class="btn btn-primary addBtn" type="button" (click)="onClick()" [disabled]="food.invalid">+
-                <!-- <span class="glyphicon glyphicon-search"></span> -->
+                <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </div>
 
                     </div>
                     <div *ngIf="f.submitted && food.invalid" class="food">
-                          <!-- <div *ngIf="food.errors.required">Name is required</div> -->
+                          <div *ngIf="food.errors.required">Name is required</div>
                         </div>
                 </div>
             </div>
@@ -54,22 +54,116 @@
                 <button (click)="clear()" class="btn btn-danger" style="width: 80px; margin-left: 5px;">Close</button>
               </a>
             </div>
-      <!-- </div> -->
+      </div>
+  </form> -->
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        name="name"
+        id="name"
+        placeholder="Enter name"
+        required
+      />
+      <div class="">
+        <label for="food">Food</label>
+        <div class="" style="padding-right: 0;padding-left: 0;">
+          <div class="input-group">
+            <input
+              #newFood
+              (keyup.enter)="addFood(newFood.value); newFood.value = ''"
+              class="form-control"
+              style="z-index: 0;"
+            />
+            <input
+              #newPrice
+              (keyup.enter)="addPrice(newPrice.value); newPrice.value = ''"
+              class="form-control"
+              style="z-index: 0;"
+            />
+            <div class="input-group-btn" style="position: absolute;right: 0;">
+              <button
+                class="btn btn-primary addBtn"
+                type="button"
+                (click)="
+                  addFood(newFood.value, newPrice.value);
+                  newFood.value = '';
+                  newPrice.value = ''
+                "
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+        <br />
+        <ul class="list-group">
+            <input
+            type="text"
+            formControlName="subFoods"
+            class="form-control"
+            name="subFoods"
+            [(ngModel)]="foods"
+            id="subFoods"
+            />
+          <li
+            *ngFor="let food of foods; let i = index"
+            class="list-group-item"
+          > 
+            <div class="input-group">
+              <span>{{ food.subFoods }}</span>
+              <input
+                type="text"
+                value="{{ food.subFoods }}"
+                name="food_name"
+                id="food_name"
+                hidden
+              />
+            </div>
+            <div class="items input-group">
+              <div style="position: relative;">
+                <input
+                  type="text"
+                  value="{{ food.price }}"
+                  name="price"
+                  id="price"
+                  hidden
+                />
+                <span style="position:absolute;left: 8px;top: 4.5px;">
+                  &#8358; {{ food.price }}</span
+                >
+                <button (click)="onClickDelete(i)" class=" btn deleteBtn">
+                  x
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button type="submit">submit</button>
   </form>
-
 </ngx-smart-modal>
-
 
 <!-- Table -->
 <div class="container">
-  <button class="btn btn-primary" style="float: right; margin-top: 30px; margin-bottom: 30px;" (click)="ngxSmartModalService.getModal('myModal').open()">Make Order</button>
+  <button
+    class="btn btn-primary"
+    style="float: right; margin-top: 30px; margin-bottom: 30px;"
+    (click)="ngxSmartModalService.getModal('myModal').open()"
+  >
+    Make Order
+  </button>
   <table class="table table-striped">
     <thead>
       <tr style="text-align: center">
-        <th scope="col" >#</th>
-        <th scope="col" >Name</th>
-        <th scope="col" >Order Type</th>
-        <th scope="col" >Priority</th>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Order Type</th>
+        <th scope="col">Priority</th>
       </tr>
     </thead>
     <tbody>
