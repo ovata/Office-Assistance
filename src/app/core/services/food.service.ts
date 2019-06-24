@@ -23,12 +23,8 @@ export class FoodService {
     });
   }
 
-  addHero(food: FoodMdl) {
-    return this.http.post<FoodMdl>(this.baseUrl, food).subscribe(res => {
-        console.log('Food Created Successfully');
-    }, err => {
-      console.log('error occured', err);
-    });
+  addFood(food: FoodMdl) {
+    return this.http.post<FoodMdl>(this.baseUrl, food);
   }
 }
 

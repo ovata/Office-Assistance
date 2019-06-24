@@ -43,9 +43,6 @@ export class DBodyComponent implements OnInit {
   }
 
   onSubmit(data) {
-    this.order.push({name: this.model.name, food: this.tasks});
-    console.log('data', this.order);
-    this.order = [];
-    this.food.addHero(data);
+    
   }
 }
