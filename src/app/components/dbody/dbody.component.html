@@ -68,20 +68,20 @@
         placeholder="Enter name"
         required
       />
-      <div class="">
+      <div class="foodhd">
         <label for="food">Food</label>
         <div class="" style="padding-right: 0;padding-left: 0;">
-          <div class="input-group">
+          <div class="input-group ">
             <input
               #newFood
               (keyup.enter)="addFood(newFood.value); newFood.value = ''"
-              class="form-control"
-              style="z-index: 0;"
+              class="form-control foodInp" placeholder="Food Name"
+              style="z-index: 0; margin-right: 24px;"
             />
             <input
               #newPrice
               (keyup.enter)="addPrice(newPrice.value); newPrice.value = ''"
-              class="form-control"
+              class="form-control priceInp"
               style="z-index: 0;"
             />
             <div class="input-group-btn" style="position: absolute;right: 0;">
@@ -113,7 +113,7 @@
           <li
             *ngFor="let food of foods; let i = index"
             class="list-group-item"
-          > 
+          >
             <div class="input-group">
               <span>{{ food.subFoods }}</span>
               <input
@@ -163,16 +163,16 @@
       <tr style="text-align: center">
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Order Type</th>
-        <th scope="col">Priority</th>
+        <!-- <th scope="col">Order Type</th>
+        <th scope="col">Priority</th> -->
       </tr>
     </thead>
     <tbody>
       <tr>
         <th scope="row">1</th>
         <td></td>
-        <td></td>
-        <td></td>
+        <!-- <td></td>
+        <td></td> -->
       </tr>
     </tbody>
   </table>
