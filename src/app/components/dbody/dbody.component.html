@@ -115,17 +115,15 @@
             class="list-group-item"
           >
             <div class="input-group">
-              <span>{{ food.subFoods }}</span>
+              <span>{{ food.food_name }}</span>
               <input
                 type="text"
-                value="{{ food.subFoods }}"
+                value="{{ food.food_name }}"
                 name="food_name"
                 id="food_name"
                 hidden
               />
-            </div>
-            <div class="items input-group">
-              <div style="position: relative;">
+              <div>
                 <input
                   type="text"
                   value="{{ food.price }}"
@@ -133,9 +131,9 @@
                   id="price"
                   hidden
                 />
-                <span style="position:absolute;left: 8px;top: 4.5px;">
-                  &#8358; {{ food.price }}</span
-                >
+                <span style="margin-left: 500px;">
+                  &#8358; {{ food.price }}
+                </span>
                 <button (click)="onClickDelete(i)" class=" btn deleteBtn">
                   x
                 </button>
