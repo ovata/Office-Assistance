@@ -75,8 +75,10 @@
             <input
               #newFood
               (keyup.enter)="addFood(newFood.value); newFood.value = ''"
-              class="form-control foodInp" placeholder="Food Name"
+              class="form-control foodInp"
+              placeholder="Food Name"
               style="z-index: 0; margin-right: 24px;"
+              input type="number;"
             />
             <input
               #newPrice
@@ -101,7 +103,7 @@
         </div>
         <br />
         <ul class="list-group">
-            <input
+          <input
             type="text"
             formControlName="subFoods"
             class="form-control"
@@ -109,11 +111,8 @@
             [(ngModel)]="foods"
             id="subFoods"
             hidden
-            />
-          <li
-            *ngFor="let food of foods; let i = index"
-            class="list-group-item"
-          >
+          />
+          <li *ngFor="let food of foods; let i = index" class="list-group-item">
             <div class="input-group">
               <span>{{ food.food_name }}</span>
               <input
@@ -143,7 +142,9 @@
         </ul>
       </div>
     </div>
-    <button type="submit">submit</button>
+    <button type="submit" class="btn btn-success" style="margin-left:296px;">
+      Submit
+    </button>
   </form>
 </ngx-smart-modal>
 
