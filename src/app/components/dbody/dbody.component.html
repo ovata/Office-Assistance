@@ -3,59 +3,6 @@
 <!-- modal -->
 <ngx-smart-modal #myModal identifier="myModal">
   <h1>Place Order</h1>
-  <!-- <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required/>
-        <div *ngIf="f.submitted && name.invalid" class="name">
-          <div *ngIf="name.errors.required">Name is required</div>
-        </div>
-
-      </div>
-      <div class="form-group" >
-            <div class="">
-                <label for="food">Food</label>
-                <div class="" style="padding-right: 0;padding-left: 0;">
-                    <div class="input-group">
-                        <input type="text" class="form-control foodInput" id="food" style="z-index: 0;" placeholder="Enter food name" [(ngModel)]="task" name="food" ngDefaultControl #food="ngModel" [ngClass]="{ 'is-invalid': food.untouched }"  />
-
-                        <div class="input-group-btn" style="position: absolute;right: 0;">
-                            <button class="btn btn-primary addBtn" type="button" (click)="onClick()" [disabled]="food.invalid">+
-                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </div>
-
-                    </div>
-                    <div *ngIf="f.submitted && food.invalid" class="food">
-                          <div *ngIf="food.errors.required">Name is required</div>
-                        </div>
-                </div>
-            </div>
-
-            <br />
-
-            <ul class="list-group">
-                <li *ngFor="let task of tasks; let i = index;" class="list-group-item">
-                    <span [(ngModel)]="model.food" #food_list="ngModel" name="food_list" ngDefaultControl value="task.food_name"> {{ task.food_name }} </span>
-                    <div class="items">
-                      <div style="position: relative;">
-                        <input [(ngModel)]="task.price" #price="ngModel" name="price" type= "number" style="position: relative; padding-left: 20px"  placeholder= "0.00">
-                        <span style="position:absolute;left: 8px;top: 4.5px;">	&#8358;</span>
-                      <label (click)="onClickDelete(i)" class=" btn deleteBtn">x</label>
-                      </div>
-
-                    </div>
-                </li>
-            </ul>
-        </div>
-            <div style="text-align: center;">
-              <button class="btn btn-success" style="width: 80px; margin-right: 5px;" [disabled]="name.invalid">Submit</button>
-              <a (click)="myModal.close()">
-                <button (click)="clear()" class="btn btn-danger" style="width: 80px; margin-left: 5px;">Close</button>
-              </a>
-            </div>
-      </div>
-  </form> -->
   <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
     <div class="form-group">
       <label for="name">Name</label>
@@ -169,11 +116,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
+      <tr *ngFor="let food of foodLists" >
         <td></td>
-        <!-- <td></td>
-        <td></td> -->
+        <a href="" style=" text-decoration: none; color: black;"><td style="display: flex;">{{food.name}}</td></a>
       </tr>
     </tbody>
   </table>

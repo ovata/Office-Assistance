@@ -16,7 +16,8 @@ export class DBodyComponent implements OnInit {
   order = [];
   model: any = {};
   foods = [];
-  private myForm: FormGroup;
+  foodLists = [];
+  public myForm: FormGroup;
 
 
   constructor(public ngxSmartModalService: NgxSmartModalService, private food: FoodService, private fb: FormBuilder) { }
@@ -27,6 +28,17 @@ export class DBodyComponent implements OnInit {
     name: new FormControl(),
     subFoods: new FormControl()
   });
+
+   this.food.getFoods().subscribe(
+    (res: any) => {
+      this.foodLists = res;
+      console.log('response', this.foodLists);
+    },
+    err => {
+      console.log('err', err);
+    }
+  );
+
   }
 
   // onClick(data) {
@@ -56,6 +68,7 @@ export class DBodyComponent implements OnInit {
     console.log(data);
     this.food.addFood(data).subscribe(
           (res: any) => {
+
           },
           err => {
             console.log(err);

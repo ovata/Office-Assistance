@@ -12,15 +12,11 @@ export class FoodService {
   constructor(private http: HttpClient) {}
 
   getFoods() {
-    this.http.get(this.baseUrl).subscribe(res => {
-      console.log(res);
-    });
+    return this.http.get(this.baseUrl);
   }
 
   getFoodById(id: number) {
-    this.http.get(this.baseUrl + id).subscribe(res => {
-      console.log(res);
-    });
+    return this.http.get(this.baseUrl + id);
   }
 
   addFood(food: FoodMdl) {
