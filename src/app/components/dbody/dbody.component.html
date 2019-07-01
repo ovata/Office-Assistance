@@ -61,8 +61,8 @@
           />
           <li *ngFor="let food of foods; let i = index" class="list-group-item">
             <div class="input-group">
-              <div style="margin-right: 200px; width: 200px">
-              <span>{{ food.food_name }}</span>
+              <div style="margin-right: 200px; width: 200px;" >
+              <span >{{ food.food_name }}</span>
               <input
                 type="text"
                 value="{{ food.food_name }}"
@@ -79,10 +79,10 @@
                   id="price"
                   hidden
                 />
-                <span>
+                <span style="padding-left: 100px;">
                   &#8358; {{ food.price }}
                 </span>
-                <button (click)="onClickDelete(i)" class=" btn deleteBtn" style="float: right;">
+                <button (click)="onClickDelete(i)" class=" btn deleteBtn btn btn-danger" style="float: right; padding-top: 0;     border-radius: 9px; margin-left: 5px; height: 25px; line-height: 0.9;">
                   x
                 </button>
               </div>
