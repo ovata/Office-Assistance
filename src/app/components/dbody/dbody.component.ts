@@ -23,21 +23,21 @@ export class DBodyComponent implements OnInit {
   constructor(public ngxSmartModalService: NgxSmartModalService, private food: FoodService, private fb: FormBuilder) { }
 
   ngOnInit() {
-   this.food.getFoods();
-   this.myForm = new FormGroup({
-    name: new FormControl(),
-    subFoods: new FormControl()
-  });
+    this.food.getFoods();
+    this.myForm = new FormGroup({
+      name: new FormControl(),
+      subFoods: new FormControl()
+    });
 
-   this.food.getFoods().subscribe(
-    (res: any) => {
-      this.foodLists = res;
-      console.log('response', this.foodLists);
-    },
-    err => {
-      console.log('err', err);
-    }
-  );
+    this.food.getFoods().subscribe(
+      (res: any) => {
+        this.foodLists = res;
+        console.log('response', this.foodLists);
+      },
+      err => {
+        console.log('err', err);
+      }
+    );
 
   }
 
@@ -54,7 +54,7 @@ export class DBodyComponent implements OnInit {
 
   addFood(newFood: string, newPrice: string) {
     if (newFood && newPrice) {
-      this.foods.push({food_name: newFood, price: newPrice});
+      this.foods.push({ food_name: newFood, price: newPrice });
       this.foods.splice(5, 1);
       console.log('clickk', this.foods);
     }
@@ -67,13 +67,13 @@ export class DBodyComponent implements OnInit {
   onSubmit(data) {
     console.log(data);
     this.food.addFood(data).subscribe(
-          (res: any) => {
+      (res: any) => {
 
-          },
-          err => {
-            console.log(err);
-          }
-        );
+      },
+      err => {
+        console.log(err);
+      }
+    );
     this.foods = [];
-        }
+  }
 }

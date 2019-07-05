@@ -52,3 +52,12 @@
   border-top-left-radius: 3px! important;
   border-bottom-left-radius: 3px! important;
 }
+
+.cancelBnt{
+  float: right; 
+  padding-top: 0;
+  border-radius: 0px;
+  margin-left: 5px;
+  height: 25px;
+  line-height: 0.9;
+}
